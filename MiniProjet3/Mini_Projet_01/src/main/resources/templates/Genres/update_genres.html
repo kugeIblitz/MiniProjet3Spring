@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ layout:decorator="template">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Projet | Update A Genre </title>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.1.3/css/bootstrap.min.css" />
+    <c:url value="/css/main.css" var="jstlCss" /> 
+    <link href="${jstlCss}" rel="stylesheet" />
+</head>
+<body>
+			<div th:replace="~{partials/nav-bar}"></div>
+
+    <div class="container mt-5">
+		
+		<div th:if="${error}">
+			<div class="alert alert-danger mb-4" role="alert" th:text="${error}"></div>
+		</div>
+        <form th:action="@{updateGenres(page = ${currentPage})}" method="POST">
+            <div class="form-floating mb-3">
+                <input type="text" name="genreId"  th:field="${genre.genreId}" class="form-control" id="floatingInput" placeholder="Genre ID" hidden>
+                <label for="floatingInput">Genre ID</label>
+              </div>
+      
+            <div class="form-floating mb-3">
+                <input type="text" name="genreName"  th:field="${genre.genreName}" class="form-control" id="floatingInput" placeholder="Genre Name">
+                <label for="floatingInput">Genre Name</label>
+          	</div>
+    
+              <button type="submit" class="btn btn-primary form-control">Submit Changes</button>
+        </form>
+    </div>
+    <script type="text/javascript" src="webjars/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+</body>
+</html>
